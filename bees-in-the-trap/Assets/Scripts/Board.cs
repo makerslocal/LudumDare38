@@ -6,6 +6,7 @@ public class Board : MonoBehaviour {
 
 	public GameObject activeHex;
 	public GameObject inactiveHex;
+	public GameObject cursor;
 
 	public GameObject boardContainer;
 
@@ -31,7 +32,11 @@ public class Board : MonoBehaviour {
 			}
 			hex.transform.position = CalculateHexPosition (i);
 			hex.transform.SetParent(boardContainer.transform);
+
+			if (i == startingHexIndex)
+				cursor.transform.position = hex.transform.position;
 		}
+
 	}
 
 	private Vector3 CalculateHexPosition(int i) {
