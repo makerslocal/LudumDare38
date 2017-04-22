@@ -12,13 +12,11 @@ public class Cursor : MonoBehaviour {
 	private Board b;
 
 	private string moves;
-	private bool hasMoved;
 
 	void Start () {
 		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Board>();
 
 		moves = "";
-		hasMoved = false;
 	}
 
 	void Update () {
@@ -53,7 +51,6 @@ public class Cursor : MonoBehaviour {
 				moves += ConvertDirectionToChar (d);
 				transform.position = b.SetCursorPosition (moves);
 			}
-			Debug.Log (transform.position);
 		}
 	}
 
