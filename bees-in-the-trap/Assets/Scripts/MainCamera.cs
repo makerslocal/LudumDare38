@@ -25,7 +25,6 @@ public class MainCamera : MonoBehaviour {
 			StopCoroutine (currentMove);
 			skipEaseIn = true;
 		}
-		Debug.Log ("Scoot TO:"); Debug.Log(endpos);
 		currentMove = SmoothMove (this.transform.position, endpos, time, skipEaseIn);
 		StartCoroutine (currentMove);
 	}

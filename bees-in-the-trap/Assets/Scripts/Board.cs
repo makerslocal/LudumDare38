@@ -63,7 +63,7 @@ public class Board : MonoBehaviour {
 				x--;
 			if (c == 'g') {
 				if (r % 2 == 1)
-					x++;
+					x--;
 				r++;
 			}
 			if (c == 'h') {
