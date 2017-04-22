@@ -10,6 +10,7 @@ public class Cursor : MonoBehaviour {
 	}
 
 	private Board b;
+	public MainCamera camera;
 
 	private string moves;
 	private bool hasMoved;
@@ -55,6 +56,9 @@ public class Cursor : MonoBehaviour {
 			}
 			Debug.Log (transform.position);
 		}
+
+		camera.scootTo (this.transform.position);
+
 	}
 
 	char ConvertDirectionToChar (Direction d) {
