@@ -10,7 +10,6 @@ public class Board : MonoBehaviour {
 
 	public GameObject boardContainer;
 
-	private static int ROW_COUNT = 3;
 	private static int BOTTOM_ROW_LENGTH = 9;
 	private static int MIDDLE_ROW_LENGTH = 10;
 	private static int TOP_ROW_LENGTH = 11;
@@ -71,4 +70,103 @@ public class Board : MonoBehaviour {
 			+ i);
 	}
 
+	public bool isLegalMovement (string moves, Cursor.Direction d) {
+
+
+		// we had BETTER always be able to move back the way we came...
+		if (d == Cursor.Direction.BACK)
+			return moves.Length > 0;
+
+		int i = Mathf.CeilToInt(BOTTOM_ROW_LENGTH / 2); // this is always the starting position
+		int r = 0; // current row
+
+		foreach (char c in moves) {
+			if (c == 'v')
+				i--;
+			if (c == 'g') {
+				if (r == 0) i += BOTTOM_ROW_LENGTH;
+				if (r == 1) i += MIDDLE_ROW_LENGTH;
+				if (r == 2)
+					throw new UnityException (
+						"The given string of movements was never legal to begin with."
+						+ "Movement string: " + moves + ", "
+						+ "Erroneous move: " + c + ", "
+						+ "Calculated index so far: " + i);
+				
+				r++;
+			}
+			if (c == 'h') {
+				if (r == 0) i += BOTTOM_ROW_LENGTH + 1;
+				if (r == 1) i += MIDDLE_ROW_LENGTH + 1;
+				if (r == 2) 
+					throw new UnityException (
+						"The given string of movements was never legal to begin with."
+						+ "Movement string: " + moves + ", "
+						+ "Erroneous move: " + c + ", "
+						+ "Calculated index so far: " + i);
+
+				r++;
+			}
+			if (c == 'n')
+				i++;
+		}
+
+
+		// if we're at the top of the map, we know we can't go up any more
+		if (r == 2 && (d == Cursor.Direction.UPLEFT || d == Cursor.Direction.UPRIGHT))
+			return false;
+
+		// if we're in the leftmost hex in a row, we can't move left
+		if ((i == 0 || i == BOTTOM_ROW_LENGTH || i == BOTTOM_ROW_LENGTH + MIDDLE_ROW_LENGTH) && d == Cursor.Direction.LEFT)
+			return false;
+
+		// if we're in the rightmost hex in a row, we can't move right
+		if (
+			(
+				i == BOTTOM_ROW_LENGTH - 1 
+				|| i == BOTTOM_ROW_LENGTH + MIDDLE_ROW_LENGTH - 1 
+				|| i == BOTTOM_ROW_LENGTH + MIDDLE_ROW_LENGTH + TOP_ROW_LENGTH - 1
+			) 
+			&& d == Cursor.Direction.RIGHT)
+			return false;
+
+		return true;
+	}
+
+	public Vector3 SetCursorPosition (string moves) {
+
+		int i = Mathf.CeilToInt(BOTTOM_ROW_LENGTH / 2); // this is always the starting position
+		int r = 0; // current row
+
+		foreach (char c in moves) {
+			if (c == 'v')
+				i--;
+			if (c == 'g') {
+				if (r == 0) i += BOTTOM_ROW_LENGTH;
+				if (r == 1) i += MIDDLE_ROW_LENGTH;
+				if (r == 2)
+					throw new UnityException (
+						"The given string of movements was never legal to begin with."
+						+ "Movement string: " + moves + ", "
+						+ "Erroneous move: " + c + ", "
+						+ "Calculated index so far: " + i);
+				r++;
+			}
+			if (c == 'h') {
+				if (r == 0) i += BOTTOM_ROW_LENGTH + 1;
+				if (r == 1) i += MIDDLE_ROW_LENGTH + 1;
+				if (r == 2) 
+					throw new UnityException (
+						"The given string of movements was never legal to begin with."
+						+ "Movement string: " + moves + ", "
+						+ "Erroneous move: " + c + ", "
+						+ "Calculated index so far: " + i);
+				r++;
+			}
+			if (c == 'n')
+				i++;
+		}
+
+		return CalculateHexPosition(i);
+	}
 }
