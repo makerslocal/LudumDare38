@@ -36,6 +36,4 @@ sysinfo.txt
 # all objects?
 obj/
 
-# ignore meta files
-*.meta
 
