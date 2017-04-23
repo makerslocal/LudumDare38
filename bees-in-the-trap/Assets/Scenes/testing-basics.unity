@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 226646096}
   - component: {fileID: 226646095}
   - component: {fileID: 226646094}
+  - component: {fileID: 226646098}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -373,6 +374,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &226646098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 226646093}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c44c6850d0862a4aa16ca8bf86aa393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorial: {fileID: 226646093}
 --- !u!1 &241759661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1323,7 @@ GameObject:
   - component: {fileID: 1085354350}
   - component: {fileID: 1085354351}
   - component: {fileID: 1085354352}
+  - component: {fileID: 1085354353}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: GameController
@@ -1361,6 +1375,18 @@ MonoBehaviour:
   cursorObject: {fileID: 217595990}
   beeText: {fileID: 1548853208}
   pollenText: {fileID: 2013592647}
+--- !u!114 &1085354353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085354349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c44c6850d0862a4aa16ca8bf86aa393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorial: {fileID: 226646093}
 --- !u!1 &1176915302
 GameObject:
   m_ObjectHideFlags: 0
