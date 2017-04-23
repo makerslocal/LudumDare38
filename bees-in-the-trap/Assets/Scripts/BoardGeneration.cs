@@ -6,11 +6,12 @@ public class BoardGeneration : MonoBehaviour {
 
 	public GameObject beeHex;
 	public GameObject cursor;
+	public GameObject rocketPrefab;
 
 	public GameObject boardContainer;
 
-	private static int ROW_LENGTH = 9;
-	public int numberOfRows = 5;
+	private static int ROW_LENGTH = 7;
+	private static int ROW_COUNT= 9;
 
 	private GameObject[] hexes;
 	private List<Hex> purchasableHexes;
@@ -20,7 +21,7 @@ public class BoardGeneration : MonoBehaviour {
 		// identify center cell on bottom
 		int startingHexIndex = Mathf.FloorToInt(ROW_LENGTH / 2);
 		GameObject hex;
-		hexes = new GameObject[ROW_LENGTH * numberOfRows + Mathf.FloorToInt(numberOfRows / 2)];
+		hexes = new GameObject[ROW_LENGTH * ROW_COUNT + Mathf.FloorToInt(ROW_COUNT / 2)];
 		purchasableHexes = new List<Hex> ();
 
 		for (int i = 0; i < hexes.Length; i++) {
@@ -42,6 +43,15 @@ public class BoardGeneration : MonoBehaviour {
 			if (i == startingHexIndex)
 				cursor.transform.position = hex.transform.position;
 		}
+		//i is now the last row.
+
+		int rocketHexIndex = Mathf.FloorToInt( hexes.Length - Mathf.FloorToInt(ROW_LENGTH/2) - 1 );
+		Debug.Log ("rocket edition: " + rocketHexIndex);
+		GameObject rocket = Instantiate (rocketPrefab);
+		Vector3 rocketHexPosition = hexes [rocketHexIndex].transform.GetChild (0).gameObject.transform.position;
+		rocket.transform.position = new Vector3 (rocketHexPosition.x, rocketHexPosition.y + 1.5f, rocketHexPosition.z);
+		rocket.transform.eulerAngles = new Vector3 (0, 0, 180);
+		rocket.transform.SetParent (hexes [rocketHexIndex].transform);
 
 		AddPurchasableHexesAdjacentTo (startingHexIndex);
 
@@ -101,7 +111,7 @@ public class BoardGeneration : MonoBehaviour {
 		}
 
 		// if we're at the top of the map, we know we can't go up any more
-		if (r == numberOfRows - 1 && (d == Cursor.Direction.UPLEFT || d == Cursor.Direction.UPRIGHT))
+		if (r == ROW_COUNT - 1 && (d == Cursor.Direction.UPLEFT || d == Cursor.Direction.UPRIGHT))
 			return false;
 		
 		// if we're in the leftmost hex in a row, we can't move left
