@@ -22,6 +22,7 @@ public class Hex : MonoBehaviour {
 	public void ActivateHex () {
 		if (!isActive) {
 			GetComponent<SpriteRenderer> ().color = active;
+			isActive = true;
 		}
 	}
 }
