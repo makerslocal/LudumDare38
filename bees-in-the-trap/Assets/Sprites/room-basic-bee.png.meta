@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 1f7f21a2d4dad433d8902f9699d67ae2
-timeCreated: 1492935122
+guid: 1b6115997065746a184f97104b13cffb
+timeCreated: 1492935970
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: basic-bee_0
-    21300002: basic-bee_1
-    21300004: basic-bee_2
-    21300006: basic-bee_3
+    21300000: room-basic-bee_0
+    21300002: room-basic-bee_1
+    21300004: room-basic-bee_2
+    21300006: room-basic-bee_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -40,11 +40,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 38
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -55,25 +55,25 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,54 +82,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: basic-bee_0
+      name: room-basic-bee_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 21
-        width: 11
-        height: 10
+        x: 0
+        y: 76
+        width: 76
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: basic-bee_1
+      name: room-basic-bee_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 20
-        width: 11
-        height: 8
+        x: 76
+        y: 76
+        width: 76
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: basic-bee_2
+      name: room-basic-bee_2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 11
-        height: 8
+        x: 152
+        y: 76
+        width: 76
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: basic-bee_3
+      name: room-basic-bee_3
       rect:
         serializedVersion: 2
-        x: 18
-        y: 4
-        width: 11
-        height: 8
+        x: 0
+        y: 0
+        width: 76
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
