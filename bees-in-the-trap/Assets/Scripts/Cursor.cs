@@ -10,7 +10,7 @@ public class Cursor : MonoBehaviour {
 	}
 
 	private Board b;
-	public MainCamera camera;
+	public CameraManager camera;
 
 	private string moves;
 
