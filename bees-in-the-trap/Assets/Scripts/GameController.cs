@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	public static int STARTING_BEES = 3;
-	public static int STARTING_POLLEN = 10;
+	public static int STARTING_BEES = 30;
+	public static int STARTING_POLLEN = 100;
+
+	public static int TURN_COUNT = 20;
+	private int turn = 1;
 
 	private int bees;
 	private int usableBees;
 	private int pollen;
+
+	private float bPressTimeStamp;
 
 	public GameObject cursorObject;
 	private Cursor cursor;
@@ -29,12 +34,23 @@ public class GameController : MonoBehaviour {
 
 		beeText.text = usableBees + " / " + bees;
 		pollenText.text = "" + pollen;
+
+		bPressTimeStamp = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp ("b")) {
-			Buy ();
+			if (Time.time - bPressTimeStamp > 0.5f) {
+				EndTurn ();
+				bPressTimeStamp = 0f;
+			} else {
+				Buy ();
+				bPressTimeStamp = 0f;
+			}
+		}
+		if (Input.GetKeyDown ("b")) {
+			bPressTimeStamp = Time.time;
 		}
 	}
 
@@ -54,6 +70,19 @@ public class GameController : MonoBehaviour {
 			pollen -= h.pollenCost;
 			beeText.text = usableBees + " / " + bees;
 			pollenText.text = "" + pollen;
+		}
+	}
+
+	void EndTurn () {
+		while (usableBees-- > 0) {
+			int r = Random.Range (1, 4);
+			pollen += r;
+		}
+		usableBees = bees;
+		beeText.text = usableBees + " / " + bees;
+		pollenText.text = "" + pollen;
+		if (++turn > TURN_COUNT) {
+			Application.LoadLevel (0); // end the game
 		}
 	}
 }
