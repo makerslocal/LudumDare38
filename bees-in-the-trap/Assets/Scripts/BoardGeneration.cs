@@ -13,6 +13,7 @@ public class BoardGeneration : MonoBehaviour {
 	public int numberOfRows = 5;
 
 	private GameObject[] hexes;
+	private List<Hex> purchasableHexes;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class BoardGeneration : MonoBehaviour {
 		int startingHexIndex = Mathf.FloorToInt(ROW_LENGTH / 2);
 		GameObject hex;
 		hexes = new GameObject[ROW_LENGTH * numberOfRows + Mathf.FloorToInt(numberOfRows / 2)];
+		purchasableHexes = new List<Hex> ();
 
 		for (int i = 0; i < hexes.Length; i++) {
 			if (i == startingHexIndex) {
@@ -40,6 +42,8 @@ public class BoardGeneration : MonoBehaviour {
 			if (i == startingHexIndex)
 				cursor.transform.position = hex.transform.position;
 		}
+
+		AddPurchasableHexesAdjacentTo (startingHexIndex);
 
 	}
 
@@ -111,6 +115,12 @@ public class BoardGeneration : MonoBehaviour {
 		return true;
 	}
 
+	public bool isHexPurchasable(Hex h) {
+		if (purchasableHexes.Contains (h))
+			return true;
+		return false;
+	}
+
 	public Vector3 SetCursorPosition (string moves) {
 
 		int i = Mathf.FloorToInt(ROW_LENGTH / 2); // this is always the starting position
@@ -153,5 +163,74 @@ public class BoardGeneration : MonoBehaviour {
 		}
 
 		return hexes[i].GetComponent<Hex>();
+	}
+
+	// i: board index of the target hex
+	public void AddPurchasableHexesAdjacentTo (int i) {
+		// check each possible hex -- left, upleft, upright, right, downright, downleft
+
+		// left
+		if (GetRowForIndex (i) == GetRowForIndex (i - 1) && i > 0) {
+			if (isPurchasableHex(i - 1)) {
+				purchasableHexes.Add (hexes [i - 1].GetComponent<Hex>());
+			}	
+		}
+		// upleft
+		if (i + ROW_LENGTH < hexes.Length) {
+			if (isPurchasableHex(i + ROW_LENGTH)) {
+				purchasableHexes.Add (hexes [i + ROW_LENGTH].GetComponent<Hex>());
+			}
+		}
+		// upright
+		if (i + ROW_LENGTH + 1 < hexes.Length) {
+			if (isPurchasableHex(i + ROW_LENGTH + 1)) {
+				purchasableHexes.Add (hexes [i + ROW_LENGTH + 1].GetComponent<Hex>());
+			}
+		}
+		// right
+		if (GetRowForIndex (i) == GetRowForIndex (i + 1) && i + 1 < hexes.Length) {
+			if (isPurchasableHex(i + 1)) {
+				purchasableHexes.Add (hexes [i + 1].GetComponent<Hex>());
+			}
+		}
+		// downright
+		if (GetRowForIndex (i) > 0 && i - ROW_LENGTH >= 0) {
+			if(isPurchasableHex(i - ROW_LENGTH)) {
+				purchasableHexes.Add (hexes[i - ROW_LENGTH].GetComponent<Hex>());
+			}
+		}
+		// downleft
+		if (GetRowForIndex (i) > 0 && i - (ROW_LENGTH + 1) >= 0) {
+			if(isPurchasableHex(i - (ROW_LENGTH + 1))) {
+				purchasableHexes.Add (hexes[i - (ROW_LENGTH + 1)].GetComponent<Hex>());
+			}
+		}
+
+		// only doesn't contain it on the start of the game
+		if(purchasableHexes.Contains(hexes [i].GetComponent<Hex>())) {
+			purchasableHexes.Remove (hexes [i].GetComponent<Hex>());
+		}
+	}
+	// i: board index of the target hex
+	private bool isPurchasableHex (int i) {
+		if (!hexes [i].GetComponent<Hex> ().isActive && !purchasableHexes.Contains (hexes [i].GetComponent<Hex>()))
+			return true;
+		return false;
+	}
+
+	public int GetRowForIndex (int i) {
+		int r = 0;
+		while(i > ROW_LENGTH + ((r % 2 == 0)? 0 : 1)) {
+			i -= ROW_LENGTH + ((r % 2 == 0)? 0 : 1);
+			r++;
+		}
+		return r;
+	}
+	public int GetIndexOfHex (Hex h) {
+		for (int i = 0; i < hexes.Length; i++) {
+			if (hexes [i].GetComponent<Hex>() == h)
+				return i;
+		}
+		return -1;
 	}
 }

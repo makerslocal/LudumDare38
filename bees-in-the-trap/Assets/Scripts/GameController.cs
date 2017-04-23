@@ -14,12 +14,14 @@ public class GameController : MonoBehaviour {
 
 	public GameObject cursorObject;
 	private Cursor cursor;
+	private BoardGeneration b;
 
 	public Text beeText;
 	public Text pollenText;
 
 	// Use this for initialization
 	void Start () {
+		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration> ();
 		cursor = cursorObject.GetComponent<Cursor> ();
 
 		bees = usableBees = STARTING_BEES;
@@ -39,8 +41,9 @@ public class GameController : MonoBehaviour {
 	void Buy () {
 		Hex h = cursor.GetSelectedHex ();
 
-		if (usableBees >= h.beeCost && pollen >= h.pollenCost && !h.isActive) {
+		if (usableBees >= h.beeCost && pollen >= h.pollenCost && !h.isActive && b.isHexPurchasable(h)) {
 			h.ActivateHex ();
+			b.AddPurchasableHexesAdjacentTo (b.GetIndexOfHex(h));
 
 			GameObject bee = h.transform.GetChild (0).gameObject;
 			bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
@@ -51,8 +54,6 @@ public class GameController : MonoBehaviour {
 			pollen -= h.pollenCost;
 			beeText.text = usableBees + " / " + bees;
 			pollenText.text = "" + pollen;
-		} else {
-			Debug.Log ("can't do it");
 		}
 	}
 }
