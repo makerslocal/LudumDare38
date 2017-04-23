@@ -13,19 +13,20 @@ public class Cursor : MonoBehaviour {
 	public CameraManager camera;
 
 	private string moves;
+	private float backPressTimestamp;
+	private Hex selectedHex;
 
 	void Start () {
 		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Board>();
 
 		moves = "";
+		backPressTimestamp = 0f;
 	}
 
 	void Update () {
 		
 		// we usually would let people configure the keys,
 		// but not for this hex-oriented control scheme.
-
-		// space is configurable tho.
 
 		// also, right now if you release multiple keys
 		// simultaneously (same frame), it'll prioritize 
@@ -39,23 +40,33 @@ public class Cursor : MonoBehaviour {
 			Move (Direction.UPRIGHT);
 		else if (Input.GetKeyUp ("n"))
 			Move (Direction.RIGHT);
-		else if (Input.GetButtonUp ("Back"))
-			Move (Direction.BACK);
+		else if (Input.GetButtonUp ("Back")) {
+			if (Time.time - backPressTimestamp > 1f) {
+				backPressTimestamp = 0f;
+				moves = "";
+				Move (Direction.LEFT); // whatever, direction doesn't matter
+				Move (Direction.BACK); // just resets everything
+			}
+			else
+				Move (Direction.BACK);
+		}
+
+
+		if (Input.GetButtonDown ("Back"))
+			backPressTimestamp = Time.time;
 	}
 
 	void Move (Direction d) {
 		if (b.isLegalMovement (moves, d)) {
 			if (d == Direction.BACK) {
 				moves = moves.Substring (0, moves.Length - 1);
-				transform.position = b.SetCursorPosition (moves);
 			} else {
 				moves += ConvertDirectionToChar (d);
-				transform.position = b.SetCursorPosition (moves);
 			}
 		}
-
+		transform.position = b.SetCursorPosition (moves);
+		selectedHex = b.GetHexAtCursorPosition (moves);
 		camera.scootTo (this.transform.position);
-
 	}
 
 	char ConvertDirectionToChar (Direction d) {
@@ -68,5 +79,9 @@ public class Cursor : MonoBehaviour {
 		if (d == Direction.RIGHT)
 			return 'n';
 		throw new UnityException ("Given direction has no associated character mapping. Direction: " + d);
+	}
+
+	public Hex GetSelectedHex() {
+		return selectedHex;
 	}
 }

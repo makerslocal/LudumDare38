@@ -13,15 +13,16 @@ public class Board : MonoBehaviour {
 	private static int ROW_LENGTH = 9;
 	public int numberOfRows = 5;
 
-	private GameObject[] board;
+	private GameObject[] hexes;
 
 	// Use this for initialization
 	void Start () {
 		// identify center cell on bottom
 		int startingHexIndex = Mathf.FloorToInt(ROW_LENGTH / 2);
 		GameObject hex;
+		hexes = new GameObject[ROW_LENGTH * numberOfRows + Mathf.FloorToInt(numberOfRows / 2)];
 
-		for (int i = 0; i < ROW_LENGTH * numberOfRows + Mathf.FloorToInt(numberOfRows / 2); i++) {
+		for (int i = 0; i < hexes.Length; i++) {
 			if (i == startingHexIndex) {
 				hex = Instantiate (activeHex);
 			} else {
@@ -29,6 +30,7 @@ public class Board : MonoBehaviour {
 			}
 			hex.transform.position = CalculateHexPosition (i);
 			hex.transform.SetParent(boardContainer.transform);
+			hexes [i] = hex;
 
 			if (i == startingHexIndex)
 				cursor.transform.position = hex.transform.position;
@@ -59,7 +61,6 @@ public class Board : MonoBehaviour {
 			i -= ROW_LENGTH + ((row % 2 == 0)? 0 : 1);
 			row++;
 		}
-		Debug.Log ("Calculated position: (" + i + ", " + row + ")");
 		return new Vector3 (i - (0.5f * ((row % 2 == 0)? 0 : 1)), row, 0);
 	}
 
@@ -72,8 +73,6 @@ public class Board : MonoBehaviour {
 
 		int x = Mathf.FloorToInt(ROW_LENGTH / 2); // this is always the starting position
 		int r = 0; // current row
-
-		Debug.Log("Moves: " + moves + ", direction: " + d);
 
 		foreach (char c in moves) {
 			if (c == 'v')
@@ -91,8 +90,6 @@ public class Board : MonoBehaviour {
 			if (c == 'n')
 				x++;
 		}
-
-		Debug.Log ("Current x, r position: " + x + ", " + r);
 
 		// if we're at the top of the map, we know we can't go up any more
 		if (r == numberOfRows - 1 && (d == Cursor.Direction.UPLEFT || d == Cursor.Direction.UPRIGHT))
@@ -130,5 +127,26 @@ public class Board : MonoBehaviour {
 		}
 
 		return CalculateHexPosition(i);
+	}
+	public Hex GetHexAtCursorPosition (string moves) {
+		int i = Mathf.FloorToInt(ROW_LENGTH / 2); // this is always the starting position
+		int r = 0; // current row
+
+		foreach (char c in moves) {
+			if (c == 'v')
+				i--;
+			if (c == 'g') {
+				i += ROW_LENGTH;
+				r++;
+			}
+			if (c == 'h') {
+				i += ROW_LENGTH + 1;
+				r++;
+			}
+			if (c == 'n')
+				i++;
+		}
+
+		return hexes[i].GetComponent<Hex>();
 	}
 }
