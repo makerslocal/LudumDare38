@@ -19,7 +19,7 @@ public class BuilderLevel : MonoBehaviour {
 
 		yield return new WaitForSeconds (time + 0.25f);
 
-		GameObject.FindGameObjectWithTag("GameController").GetComponent<Board>().TakeOff ();
+		GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardGeneration>().TakeOff ();
 	}
 
 	// Use this for initialization

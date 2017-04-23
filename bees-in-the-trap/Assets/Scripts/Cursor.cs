@@ -9,7 +9,7 @@ public class Cursor : MonoBehaviour {
 		LEFT, UPLEFT, UPRIGHT, RIGHT, BACK
 	}
 
-	private Board b;
+	private BoardGeneration b;
 	public CameraManager camera;
 
 	private string moves;
@@ -17,7 +17,7 @@ public class Cursor : MonoBehaviour {
 	private Hex selectedHex;
 
 	void Start () {
-		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Board>();
+		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration>();
 
 		moves = "";
 		backPressTimestamp = 0f;
