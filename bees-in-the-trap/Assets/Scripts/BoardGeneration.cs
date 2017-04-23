@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BoardGeneration : MonoBehaviour {
 
-	public GameObject beeHex;
+	public GameObject basicHex;
+	public GameObject roboHex;
+	public GameObject nightHex;
+	public GameObject rainbowHex;
 	public GameObject cursor;
 	public GameObject rocketPrefab;
 
@@ -16,6 +19,9 @@ public class BoardGeneration : MonoBehaviour {
 	private GameObject[] hexes;
 	private List<Hex> purchasableHexes;
 
+	private int[] upgradeSpawnPoints;
+	private static int UPGRADE_COUNT = 4;
+
 	// Use this for initialization
 	void Start () {
 		// identify center cell on bottom
@@ -24,17 +30,38 @@ public class BoardGeneration : MonoBehaviour {
 		hexes = new GameObject[ROW_LENGTH * ROW_COUNT + Mathf.FloorToInt(ROW_COUNT / 2)];
 		purchasableHexes = new List<Hex> ();
 
+		upgradeSpawnPoints = new int[UPGRADE_COUNT];
+
+		// how to guarantee spawn points are all unique?
+		for (int u = 0; u < UPGRADE_COUNT; u++) {
+			int random = Random.Range (0, hexes.Length);
+
+			// horrible horrible efficiency and a chance we 
+			// loop infinitely but we'll never have
+			// more than like n = 100 so w/e
+			while (isRandomInUpgradeSpawnPoints (random)) {
+				random = Random.Range (0, hexes.Length);
+			}
+
+			upgradeSpawnPoints [u] = Random.Range (0, hexes.Length);
+		}
+
 		for (int i = 0; i < hexes.Length; i++) {
 			if (i == startingHexIndex) {
-				hex = Instantiate (beeHex);
+				hex = Instantiate (basicHex);
 				hex.GetComponent<Hex> ().ActivateHex ();
 				GameObject bee = hex.transform.GetChild (0).gameObject;
 				bee.GetComponent<SpriteRenderer> ().color = hex.GetComponent<SpriteRenderer> ().color;
 				bee.GetComponent<Animator> ().SetBool ("IsFocused", true);
 				bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
+			} else if (i == upgradeSpawnPoints [0]) {
+				hex = Instantiate (roboHex);
+			} else if (i == upgradeSpawnPoints [1]) {
+				hex = Instantiate (nightHex);
+			} else if (i == upgradeSpawnPoints [2]) {
+				hex = Instantiate (rainbowHex);
 			} else {
-				hex = Instantiate (beeHex);
-				GameObject bee = hex.transform.GetChild (0).gameObject;
+				hex = Instantiate (basicHex);
 			}
 			hex.transform.position = CalculateHexPosition (i);
 			hex.transform.SetParent(boardContainer.transform);
@@ -242,5 +269,13 @@ public class BoardGeneration : MonoBehaviour {
 				return i;
 		}
 		return -1;
+	}
+
+	private bool isRandomInUpgradeSpawnPoints (int random) {
+		foreach (int u in upgradeSpawnPoints) {
+			if (random == u || random == Mathf.FloorToInt(ROW_LENGTH / 2))
+				return true;
+		}
+		return false;
 	}
 }
