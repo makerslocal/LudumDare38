@@ -26,6 +26,9 @@ public class BoardGeneration : MonoBehaviour {
 			if (i == startingHexIndex) {
 				hex = Instantiate (beeHex);
 				hex.GetComponent<Hex> ().ActivateHex ();
+				GameObject bee = hex.transform.GetChild (0).gameObject;
+				bee.GetComponent<Animator> ().StartPlayback ();
+				bee.GetComponent<SpriteRenderer> ().color = hex.GetComponent<SpriteRenderer> ().color;
 			} else {
 				hex = Instantiate (beeHex);
 			}
