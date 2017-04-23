@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoardGeneration : MonoBehaviour {
 
 	public GameObject beeHex;
-	public GameObject bee;
 	public GameObject cursor;
 
 	public GameObject boardContainer;
@@ -27,12 +26,12 @@ public class BoardGeneration : MonoBehaviour {
 				hex = Instantiate (beeHex);
 				hex.GetComponent<Hex> ().ActivateHex ();
 				GameObject bee = hex.transform.GetChild (0).gameObject;
-				bee.GetComponent<Animation> ().Play ();
 				bee.GetComponent<SpriteRenderer> ().color = hex.GetComponent<SpriteRenderer> ().color;
+				bee.GetComponent<Animator> ().SetBool ("IsFocused", true);
+				bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
 			} else {
 				hex = Instantiate (beeHex);
 				GameObject bee = hex.transform.GetChild (0).gameObject;
-				bee.GetComponent<Animation> ().Stop ();
 			}
 			hex.transform.position = CalculateHexPosition (i);
 			hex.transform.SetParent(boardContainer.transform);

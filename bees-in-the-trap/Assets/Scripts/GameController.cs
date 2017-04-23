@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour {
 			h.ActivateHex ();
 
 			GameObject bee = h.transform.GetChild (0).gameObject;
-			bee.GetComponent<Animation> ().Play ();
+			bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
 			bee.GetComponent<SpriteRenderer> ().color = h.GetComponent<SpriteRenderer> ().color;
 
 			bees += h.beeReward;

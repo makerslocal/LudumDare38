@@ -21,6 +21,7 @@ public class Cursor : MonoBehaviour {
 
 		moves = "";
 		backPressTimestamp = 0f;
+		selectedHex = null;
 	}
 
 	void Update () {
@@ -57,6 +58,9 @@ public class Cursor : MonoBehaviour {
 	}
 
 	void Move (Direction d) {
+		if (selectedHex == null)
+			selectedHex = b.GetHexAtCursorPosition (moves);
+
 		if (b.isLegalMovement (moves, d)) {
 			if (d == Direction.BACK) {
 				moves = moves.Substring (0, moves.Length - 1);
@@ -65,7 +69,10 @@ public class Cursor : MonoBehaviour {
 			}
 		}
 		transform.position = b.SetCursorPosition (moves);
+		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", false);
+		
 		selectedHex = b.GetHexAtCursorPosition (moves);
+		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", true);
 		camera.scootTo (this.transform.position);
 	}
 
