@@ -1466,6 +1466,7 @@ GameObject:
   - component: {fileID: 1085354350}
   - component: {fileID: 1085354351}
   - component: {fileID: 1085354353}
+  - component: {fileID: 1085354352}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: GameController
@@ -1497,11 +1498,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11cda9e01a8764d5e91b4a5ff77bf8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beeHex: {fileID: 0}
+  beeHex: {fileID: 1776724508626650, guid: 6aa5fb3dca4e54bc5be8ae473a3d331d, type: 2}
   bee: {fileID: 0}
   cursor: {fileID: 217595990}
   boardContainer: {fileID: 1312778782}
   numberOfRows: 5
+--- !u!114 &1085354352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085354349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8aa455f04e884a9383ad416aef92a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorObject: {fileID: 217595990}
+  beeText: {fileID: 1548853208}
+  pollenText: {fileID: 2013592647}
 --- !u!114 &1085354353
 MonoBehaviour:
   m_ObjectHideFlags: 0

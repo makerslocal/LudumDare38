@@ -49,6 +49,8 @@ public class GameController : MonoBehaviour {
 			pollen -= h.pollenCost;
 			beeText.text = BEES_TEXT + usableBees + " / " + bees;
 			pollenText.text = POLLEN_TEXT + pollen;
+		} else {
+			Debug.Log ("can't do it");
 		}
 	}
 }
