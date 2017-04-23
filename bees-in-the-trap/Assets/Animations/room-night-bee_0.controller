@@ -40,8 +40,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsPurchased
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsFocused
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102721247709432636}
@@ -114,7 +114,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: room-night-bee--idle
+  m_Name: Fluttering
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
