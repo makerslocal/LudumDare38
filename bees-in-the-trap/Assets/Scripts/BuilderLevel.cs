@@ -7,6 +7,7 @@ public class BuilderLevel : MonoBehaviour {
 	public CameraManager camera;
 
 	void startTakeoffCutscene() {
+		Debug.Log ("doing it");
 		StartCoroutine (doTakeoffCutscene ());
 	}
 	IEnumerator doTakeoffCutscene() {
@@ -17,16 +18,18 @@ public class BuilderLevel : MonoBehaviour {
 		camera.rotateTo (new Vector3 (0, 0, 180), time);
 		camera.zoomTo (25, time);
 
-		yield return new WaitForSeconds (time + 0.25f);
+		yield return new WaitForSeconds (time);
+
+		yield return new WaitForSeconds (0.25f);
 
 		GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardGeneration>().TakeOff ();
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp ("return")) {
