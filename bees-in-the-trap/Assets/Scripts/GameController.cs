@@ -8,9 +8,6 @@ public class GameController : MonoBehaviour {
 	public static int STARTING_BEES = 3;
 	public static int STARTING_POLLEN = 10;
 
-	private static string BEES_TEXT = "BEES: ";
-	private static string POLLEN_TEXT = "POLLEN: ";
-
 	private int bees;
 	private int usableBees;
 	private int pollen;
@@ -28,8 +25,8 @@ public class GameController : MonoBehaviour {
 		bees = usableBees = STARTING_BEES;
 		pollen = STARTING_POLLEN;
 
-		beeText.text = BEES_TEXT + usableBees + " / " + bees;
-		pollenText.text = POLLEN_TEXT + pollen;
+		beeText.text = usableBees + " / " + bees;
+		pollenText.text = "" + pollen;
 	}
 	
 	// Update is called once per frame
@@ -47,8 +44,8 @@ public class GameController : MonoBehaviour {
 			bees += h.beeReward;
 			usableBees -= h.beeCost;
 			pollen -= h.pollenCost;
-			beeText.text = BEES_TEXT + usableBees + " / " + bees;
-			pollenText.text = POLLEN_TEXT + pollen;
+			beeText.text = usableBees + " / " + bees;
+			pollenText.text = "" + pollen;
 		} else {
 			Debug.Log ("can't do it");
 		}
