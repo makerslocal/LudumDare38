@@ -41,7 +41,7 @@ public class Cursor : MonoBehaviour {
 		else if (Input.GetKeyUp ("n"))
 			Move (Direction.RIGHT);
 		else if (Input.GetButtonUp ("Back")) {
-			if (Time.time - backPressTimestamp > 1f) {
+			if (Time.time - backPressTimestamp > 0.5f) {
 				backPressTimestamp = 0f;
 				moves = "";
 				Move (Direction.LEFT); // whatever, direction doesn't matter

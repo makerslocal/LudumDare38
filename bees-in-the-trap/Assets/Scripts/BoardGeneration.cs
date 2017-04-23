@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoardGeneration : MonoBehaviour {
 
-	public GameObject activeHex;
-	public GameObject inactiveHex;
+	public GameObject beeHex;
+	public GameObject bee;
 	public GameObject cursor;
 
 	public GameObject boardContainer;
@@ -24,9 +24,10 @@ public class BoardGeneration : MonoBehaviour {
 
 		for (int i = 0; i < hexes.Length; i++) {
 			if (i == startingHexIndex) {
-				hex = Instantiate (activeHex);
+				hex = Instantiate (beeHex);
+				hex.GetComponent<Hex> ().ActivateHex ();
 			} else {
-				hex = Instantiate (inactiveHex);
+				hex = Instantiate (beeHex);
 			}
 			hex.transform.position = CalculateHexPosition (i);
 			hex.transform.SetParent(boardContainer.transform);
@@ -61,7 +62,7 @@ public class BoardGeneration : MonoBehaviour {
 			i -= ROW_LENGTH + ((row % 2 == 0)? 0 : 1);
 			row++;
 		}
-		return new Vector3 (i - (0.5f * ((row % 2 == 0)? 0 : 1)), row, 0);
+		return new Vector3 ((1.315f * i - (0.5f * ((row % 2 == 0)? 0 : 0.44f)) * 3f), row * 1.15f, 0);
 	}
 
 	public bool isLegalMovement (string moves, Cursor.Direction d) {

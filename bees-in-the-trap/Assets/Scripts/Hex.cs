@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof (SpriteRenderer))]
 public class Hex : MonoBehaviour {
 
-	public Sprite inactiveHex;
-	public Sprite purchasableHex;
-	public Sprite activeHex;
+	public Sprite roomHex;
+	public Color active;
+	public Color inactive;
 
 	public static int DEFAULT_POLLEN_COST = 10;
 	public static int DEFAULT_BEE_COST = 1;
@@ -21,7 +21,7 @@ public class Hex : MonoBehaviour {
 
 	public void ActivateHex () {
 		if (!isActive) {
-			GetComponent<SpriteRenderer> ().sprite = activeHex;
+			GetComponent<SpriteRenderer> ().color = active;
 		}
 	}
 }
