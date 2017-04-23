@@ -15,7 +15,7 @@ public class Hex : MonoBehaviour {
 	public int pollenCost = 10;
 	public int beeCost = 1; 
 
-	public int beeReward = 2;
+	public int beeReward = 1;
 
 	public bool isActive;
 

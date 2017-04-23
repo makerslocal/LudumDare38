@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	public static int STARTING_BEES = 30;
-	public static int STARTING_POLLEN = 100;
+	public static int STARTING_BEES = 3;
+	public static int STARTING_POLLEN = 10;
 
 	public static int TURN_COUNT = 20;
 	private int turn = 1;
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
 
 	void EndTurn () {
 		while (usableBees-- > 0) {
-			int r = Random.Range (1, 4);
+			int r = Random.Range (0, 4);
 			pollen += r;
 		}
 		usableBees = bees;
