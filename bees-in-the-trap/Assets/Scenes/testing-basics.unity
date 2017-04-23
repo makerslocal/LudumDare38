@@ -1644,7 +1644,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1784,10 +1784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beeHex: {fileID: 1958513328985254, guid: 84d093bed43aa435d947092fc418c9da, type: 2}
-  bee: {fileID: 0}
   cursor: {fileID: 217595990}
+  rocketPrefab: {fileID: 1967321498978304, guid: 3bb10c682b012734aa88d278c9c2d22b,
+    type: 2}
   boardContainer: {fileID: 1312778782}
-  numberOfRows: 5
 --- !u!114 &1085354352
 MonoBehaviour:
   m_ObjectHideFlags: 0

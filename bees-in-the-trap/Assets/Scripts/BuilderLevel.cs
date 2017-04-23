@@ -21,7 +21,7 @@ public class BuilderLevel : MonoBehaviour {
 		camera.zoomTo (25, time);
 
 		yield return new WaitForSeconds (time);
-
+		GameObject.FindGameObjectWithTag ("Rocket").GetComponent<Animator> ().SetBool ("BlazeIt", true);
 		yield return new WaitForSeconds (0.25f);
 
 		GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardGeneration>().TakeOff ();
