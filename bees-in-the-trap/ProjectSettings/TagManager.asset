@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Board
   - Rocket
+  - Cursor
   layers:
   - Default
   - TransparentFX

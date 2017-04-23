@@ -11,6 +11,8 @@ public class BuilderLevel : MonoBehaviour {
 		StartCoroutine (doTakeoffCutscene ());
 	}
 	IEnumerator doTakeoffCutscene() {
+		GameObject.FindGameObjectWithTag ("Cursor").GetComponent<SpriteRenderer> ().enabled = false;
+
 		float time = 1.5f;
 		Vector3 pos = camera.transform.position;
 		pos.y += -10;
