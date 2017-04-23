@@ -36,6 +36,23 @@ public class Board : MonoBehaviour {
 
 	}
 
+	public void TakeOff() {
+		StartCoroutine (GTFO());
+	}
+
+	IEnumerator GTFO(float speed = 1.1f) { 
+		float increment = 0.01f;
+		while ( true ) {
+			Vector3 temp = boardContainer.transform.position;
+			temp.y -= increment;
+			boardContainer.transform.position = temp;
+
+			increment = increment * speed;
+			yield return null;
+		}
+	}
+		
+
 	private Vector3 CalculateHexPosition(int i) {
 		int row = 0;
 		while (i > ROW_LENGTH + ((row % 2 == 0)? -1 : 0)) {
