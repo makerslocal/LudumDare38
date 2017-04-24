@@ -56,8 +56,11 @@ public class BuilderLevel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		/*
+		//press enter 2 win game
 		if (Input.GetKeyUp ("return")) {
 			startTakeoffCutscene ();
 		}
+		*/
 	}
 }
