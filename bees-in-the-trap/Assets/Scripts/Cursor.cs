@@ -79,13 +79,22 @@ public class Cursor : MonoBehaviour {
 		transform.position = b.SetCursorPosition (moves);
 		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", false);
 		
+		camera.scootTo (this.transform.position);
+
 		selectedHex = b.GetHexAtCursorPosition (moves);
 		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", true);
 
-		camera.scootTo (this.transform.position);
+		LoadShitFromSelectedHex ();
 
+	}
+
+	public void LoadShitFromSelectedHex() {
 		itemTitleText.text = selectedHex.upgradeTitle;
-		itemDescriptionText.text = selectedHex.upgradeDescription;
+		if (selectedHex.isActive) {
+			itemDescriptionText.text = selectedHex.upgradeDescription;
+		} else {
+			itemDescriptionText.text = "?";
+		}
 	}
 
 	public void FixCamera() {

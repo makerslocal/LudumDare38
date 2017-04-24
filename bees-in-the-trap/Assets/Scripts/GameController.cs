@@ -91,6 +91,9 @@ public class GameController : MonoBehaviour {
 				//The user bought the endgame tile.
 				level.startTakeoffCutscene ();
 			}
+
+			//we bought something so let's reload the text so we can show its description now
+			cursor.LoadShitFromSelectedHex();
 		}
 	}
 
