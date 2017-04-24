@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public static int STARTING_BEES = 3;
 	public static int STARTING_POLLEN = 10;
 
-	public static int TURN_COUNT = 10;
+	public static int TURN_COUNT = 12;
 	private int turn = 1;
 
 	private int bees;
