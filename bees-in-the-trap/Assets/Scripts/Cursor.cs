@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cursor : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class Cursor : MonoBehaviour {
 
 	private BoardGeneration b;
 	public CameraManager camera;
+	public Text itemTitleText;
+	public Text itemDescriptionText;
 
 	private string moves;
 	private float backPressTimestamp;
