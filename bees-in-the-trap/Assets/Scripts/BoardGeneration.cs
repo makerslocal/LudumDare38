@@ -13,8 +13,8 @@ public class BoardGeneration : MonoBehaviour {
 
 	public GameObject boardContainer;
 
-	private static int ROW_LENGTH = 7;
-	private static int ROW_COUNT= 9;
+	public static int ROW_LENGTH = 7;
+	public static int ROW_COUNT= 9;
 
 	private GameObject[] hexes;
 	private List<Hex> purchasableHexes;
@@ -90,7 +90,7 @@ public class BoardGeneration : MonoBehaviour {
 
 	IEnumerator GTFO(float speed = 1.1f) { 
 		float increment = 0.01f;
-		while ( true ) {
+		while ( increment < 20 ) {
 			Vector3 temp = boardContainer.transform.position;
 			temp.y -= increment;
 			boardContainer.transform.position = temp;
@@ -98,8 +98,9 @@ public class BoardGeneration : MonoBehaviour {
 			increment = increment * speed;
 			yield return null;
 		}
+		Debug.Log ("Done GTFOing");
 	}
-		
+
 
 	private Vector3 CalculateHexPosition(int i) {
 		int row = 0;

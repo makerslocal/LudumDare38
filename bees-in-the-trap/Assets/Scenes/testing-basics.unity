@@ -2118,6 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1031300160}
+  boardContainer: {fileID: 1312778782}
 --- !u!1 &1985579142
 GameObject:
   m_ObjectHideFlags: 0

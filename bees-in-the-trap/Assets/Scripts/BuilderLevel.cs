@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuilderLevel : MonoBehaviour {
 
 	public CameraManager camera;
+	public GameObject boardContainer;
 
 	void startTakeoffCutscene() {
 		Debug.Log ("doing it");
@@ -18,13 +19,18 @@ public class BuilderLevel : MonoBehaviour {
 		pos.y += -10;
 		//camera.scootTo (pos, time);
 		camera.rotateTo (new Vector3 (0, 0, 180), time);
-		camera.zoomTo (25, time);
+		camera.zoomTo (15, time);
 
 		yield return new WaitForSeconds (time);
 		GameObject.FindGameObjectWithTag ("Rocket").GetComponent<Animator> ().SetBool ("BlazeIt", true);
 		yield return new WaitForSeconds (0.25f);
 
-		GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardGeneration>().TakeOff ();
+		BoardGeneration bg = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration> ();
+		bg.TakeOff ();
+		yield return new WaitForSeconds (2f);
+		camera.zoomTo (20, 0);
+		camera.transform.position = new Vector3(boardContainer.transform.position.x + Mathf.FloorToInt(BoardGeneration.ROW_LENGTH/2), boardContainer.transform.position.y - Mathf.FloorToInt(BoardGeneration.ROW_COUNT/2), -10);
+		camera.zoomTo (25, 30);
 	}
 
 	// Use this for initialization
