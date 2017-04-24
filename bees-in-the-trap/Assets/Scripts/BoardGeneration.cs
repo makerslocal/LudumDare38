@@ -13,8 +13,8 @@ public class BoardGeneration : MonoBehaviour {
 
 	public GameObject boardContainer;
 
-	private static int ROW_LENGTH = 11;
-	private static int ROW_COUNT= 7;
+	public static int ROW_LENGTH = 11;
+	public static int ROW_COUNT= 7;
 
 	private GameObject[] hexes;
 	private List<Hex> purchasableHexes;
