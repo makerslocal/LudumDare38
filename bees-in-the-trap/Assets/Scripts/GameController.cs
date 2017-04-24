@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
 	private Cursor cursor;
 	private BoardGeneration b;
 
+	public Text turnText;
 	public Text beeText;
 	public Text pollenText;
 
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour {
 
 		beeText.text = usableBees + " / " + bees;
 		pollenText.text = "" + pollen;
+		turnText.text = "Turn " + turn + " / " + TURN_COUNT;
 
 		bPressTimeStamp = 0f;
 	}
@@ -84,5 +86,6 @@ public class GameController : MonoBehaviour {
 		if (++turn > TURN_COUNT) {
 			Application.LoadLevel (0); // end the game
 		}
+		turnText.text = "Turn " + turn + " / " + TURN_COUNT;
 	}
 }
