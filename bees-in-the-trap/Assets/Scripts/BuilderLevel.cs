@@ -6,6 +6,7 @@ public class BuilderLevel : MonoBehaviour {
 
 	public CameraManager camera;
 	public GameObject boardContainer;
+	public GameObject cutsceneUi;
 
 	void startTakeoffCutscene() {
 		Debug.Log ("doing it");
@@ -13,6 +14,9 @@ public class BuilderLevel : MonoBehaviour {
 	}
 	IEnumerator doTakeoffCutscene() {
 		GameObject.FindGameObjectWithTag ("Cursor").GetComponent<SpriteRenderer> ().enabled = false;
+		foreach (GameObject thing in GameObject.FindGameObjectsWithTag("LevelUI")) {
+			thing.SetActive (false);
+		}
 
 		float time = 1.5f;
 		Vector3 pos = camera.transform.position;
@@ -28,9 +32,14 @@ public class BuilderLevel : MonoBehaviour {
 		BoardGeneration bg = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration> ();
 		bg.TakeOff ();
 		yield return new WaitForSeconds (2f);
+
 		camera.zoomTo (20, 0);
 		camera.transform.position = new Vector3(boardContainer.transform.position.x + Mathf.FloorToInt(BoardGeneration.ROW_LENGTH/2), boardContainer.transform.position.y - Mathf.FloorToInt(BoardGeneration.ROW_COUNT/2), -10);
 		camera.zoomTo (25, 30);
+		yield return new WaitForSeconds (1f);
+
+		cutsceneUi.SetActive (true);
+
 	}
 
 	// Use this for initialization
