@@ -20,8 +20,7 @@ public class Scroller : MonoBehaviour {
 		StartCoroutine (DoScrolling ());
 	}
 	IEnumerator DoScrolling() {
-		float pos = home;	
-		float seconds = 10; //higher == slower
+		float seconds = 8; //higher == slower
 		while (true) {
 			float t = 0.0f;
 			while (t < 1) {

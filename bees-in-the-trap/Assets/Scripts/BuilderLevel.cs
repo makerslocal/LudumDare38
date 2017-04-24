@@ -23,7 +23,7 @@ public class BuilderLevel : MonoBehaviour {
 		pos.y += -10;
 		//camera.scootTo (pos, time);
 		camera.rotateTo (new Vector3 (0, 0, 180), time);
-		camera.zoomTo (15, time);
+		camera.zoomTo (30, time);
 
 		yield return new WaitForSeconds (time);
 		GameObject.FindGameObjectWithTag ("Rocket").GetComponent<Animator> ().SetBool ("BlazeIt", true);
@@ -33,12 +33,12 @@ public class BuilderLevel : MonoBehaviour {
 		bg.TakeOff ();
 		yield return new WaitForSeconds (2f);
 
-		camera.zoomTo (20, 0);
+		camera.zoomTo (15, 0);
 		GameObject space = GameObject.FindGameObjectWithTag ("SpaceBG");
 		space.transform.position = boardContainer.transform.position;
 		space.GetComponent<Scroller> ().StartScrolling ();
 		camera.transform.position = new Vector3(boardContainer.transform.position.x + Mathf.FloorToInt(BoardGeneration.ROW_LENGTH/2), boardContainer.transform.position.y - Mathf.FloorToInt(BoardGeneration.ROW_COUNT/2), -10);
-		camera.zoomTo (25, 30);
+		camera.zoomTo (20, 30);
 		yield return new WaitForSeconds (1f);
 
 		cutsceneUi.SetActive (true);
