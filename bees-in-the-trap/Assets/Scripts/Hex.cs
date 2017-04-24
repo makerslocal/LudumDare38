@@ -6,6 +6,7 @@ using UnityEngine;
 public class Hex : MonoBehaviour {
 
 	public Sprite roomHex;
+	public GameObject purchasableIndicator;
 	public Color active;
 	public Color inactive;
 
