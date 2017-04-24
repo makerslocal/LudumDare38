@@ -8,6 +8,11 @@ public class GameController : MonoBehaviour {
 	public static int STARTING_BEES = 3;
 	public static int STARTING_POLLEN = 10;
 
+	public static float TURNS_VALUE = 200;
+	public static float BEES_VALUE = 150;
+	public static float POLLEN_VALUE = 75;
+	public static float LUCK = 70;
+
 	public static int TURN_COUNT = 12;
 	private int turn = 1;
 
@@ -99,5 +104,82 @@ public class GameController : MonoBehaviour {
 			Application.LoadLevel (0); // end the game
 		}
 		turnText.text = "Turn " + turn + " / " + TURN_COUNT;
+	}
+
+	public string GetScoreDescription() {
+		double adjBees = bees;
+		double adjPollen = pollen;
+		double adjUnusedTurns = TURN_COUNT - turn;
+		double adjLuck = LUCK;
+
+		//space upgrayedds
+		if (upgrades.Contains (Upgrade.BEEARD)) {
+			adjUnusedTurns = adjUnusedTurns * 0.8;
+			adjPollen = adjPollen * 1.2;
+		}
+		if (upgrades.Contains (Upgrade.ROBOT)) {
+			adjPollen = adjPollen * 0.8;
+			adjUnusedTurns = adjUnusedTurns * 1.2;
+		}
+		if (upgrades.Contains (Upgrade.UNICORN)) {
+			adjLuck = adjLuck * 1.3;
+		}
+		Debug.Log ("adjBees: " + adjBees + ", adjPollen: " + adjPollen + ", adjUnusedTurns: " + adjUnusedTurns + ", adjLuck: " + adjLuck);
+
+		double score = 0;
+		bool hitAsteroid = false;
+		string result = "Here's how your ship fared:\n";
+
+		//here I will write some bullshit values that have nothing to do with anything because i hate math
+
+		if (bees < 10) {
+			result += "Only";
+		} else if (bees > 15) {
+			result += "A whopping";
+		} else {
+			result += "A total of";
+		}
+		result += " " + bees + " bees went to space, ";
+		score += adjBees * BEES_VALUE;
+
+		if (pollen < 10) {
+			result += "but they had only";
+		} else if (pollen > 20) {
+			result += "and they had over";
+		} else {
+			result += "with";
+		}
+		result += " " + pollen + " pollen to spare. ";
+		score += adjPollen * POLLEN_VALUE;
+
+		if (adjUnusedTurns < 2) {
+			result += "They barely made it out alive before the planet fell to ruins!";
+		} else if (adjUnusedTurns > 5) {
+			result += "They left with tons of time to spare!";
+		}
+		result += "\n";
+		score += adjUnusedTurns * TURNS_VALUE;
+
+		//ok so let's determine whether we hit an asteroid or nah
+		double roll = Random.Range (0f, 100f);
+		Debug.Log ("Rolled a " + roll);
+		if (roll > adjLuck) {
+			Debug.Log ("'WHACK!' -- asteroid");
+			//so if luck is 70, and we roll over a 70, then we get hit by an asteroid. 30% chance of asteroid. u no what im sayin
+			hitAsteroid = true;
+			result += "Unfortunately, they were unlucky enough to be struck by an asteroid!";
+			if (LUCK == adjLuck) {
+				//user didn't buy anything affecting luck, let's hint about the unicorn
+				result += " If only they could have had some sort of guardian...";
+			}
+			result += "\n";
+			score = score * 0.75; //rekt
+		}
+		result += "\n";
+
+		result += "Score: " + score;
+
+		return result;
+
 	}
 }

@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuilderLevel : MonoBehaviour {
 
 	public CameraManager camera;
 	public GameObject boardContainer;
 	public GameObject cutsceneUi;
+	public Text resultText;
+	public GameController gc;
 
 	public void startTakeoffCutscene() {
 		Debug.Log ("doing it");
@@ -41,6 +44,7 @@ public class BuilderLevel : MonoBehaviour {
 		camera.zoomTo (20, 30);
 		yield return new WaitForSeconds (1f);
 
+		resultText.text = gc.GetScoreDescription ();
 		cutsceneUi.SetActive (true);
 
 	}

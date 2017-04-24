@@ -2433,6 +2433,8 @@ MonoBehaviour:
   camera: {fileID: 1031300160}
   boardContainer: {fileID: 1312778782}
   cutsceneUi: {fileID: 870240927}
+  resultText: {fileID: 1369421113}
+  gc: {fileID: 1085354352}
 --- !u!1 &1985579142
 GameObject:
   m_ObjectHideFlags: 0

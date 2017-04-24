@@ -301,7 +301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press <b> to be a bee
+  m_Text: Press B to be a bee
 --- !u!222 &546310136
 CanvasRenderer:
   m_ObjectHideFlags: 0
