@@ -46,8 +46,7 @@ public class BoardGeneration : MonoBehaviour {
 			while (isRandomInUpgradeSpawnPoints (random)) {
 				random = Random.Range (0, hexes.Length);
 			}
-
-			upgradeSpawnPoints [u] = Random.Range (0, hexes.Length);
+			upgradeSpawnPoints [u] = random;
 		}
 
 		for (int i = 0; i < hexes.Length; i++) {
