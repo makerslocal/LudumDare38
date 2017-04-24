@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.692}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -628,7 +628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 87, y: 84.5}
+  m_AnchoredPosition: {x: 82, y: 98}
   m_SizeDelta: {x: 127, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344001437
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6901961}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2309,15 +2309,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press B to buy the selected tile.
+  m_Text: 'Press B to have a bee build the selected room.
 
-    Press other letters to move in their respective directions.
+    Press other letters to move the cursor in that direction.
 
     Press the space bar to retrace one step,
 
     or hold it to retrace all your steps.
 
-    Hold B to end your turn.
+    Hold B to send the rest of the bees
+
+    out for pollen and end your turn.
 
     (Oh, and press T to hide the tutorial.)'
 --- !u!222 &1437955464
