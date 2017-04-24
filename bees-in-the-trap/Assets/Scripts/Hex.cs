@@ -21,6 +21,8 @@ public class Hex : MonoBehaviour {
 	public bool isActive;
 
 	public Upgrade upgrade;
+	public string upgradeTitle = "Bee Home";
+	public string upgradeDescription = "Two worker bees live here.";
 
 	public void ActivateHex () {
 		if (!isActive) {

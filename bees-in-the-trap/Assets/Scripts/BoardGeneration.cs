@@ -128,39 +128,63 @@ public class BoardGeneration : MonoBehaviour {
 		switch (u) {
 		case Upgrade.BEACH:
 			hex = Instantiate (beachHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Beeach Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "Each bee does more for the hive, but time files when you're having fun.\n(Improves bee worth, but diminishes turn worth.)";
 			break;
 		case Upgrade.BEEARD:
 			hex = Instantiate (beeardHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Beearded Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "You got more for your pollen when he was younger. Oh, how the years go by.\n(Improves pollen worth, but diminishes turn worth.)";
 			break;
 		case Upgrade.BEEBALL:
 			hex = Instantiate (beeBallHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Bee Ball";
+			hex.GetComponent<Hex> ().upgradeDescription = "More money, more money. Ballin'!\n(Improves pollen and bee worth.)";
 			break;
 		case Upgrade.BUZZFEED:
 			hex = Instantiate (buzzFeedHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Buzzfeed";
+			hex.GetComponent<Hex> ().upgradeDescription = "26 pollen you won't believe! #13 will surprise you.\n(Improves pollen worth.)";
 			break;
 		case Upgrade.GUM:
 			hex = Instantiate (gumHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Gum Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "Fun and flexible!\n(Improves pollen and turn worth.)";
 			break;
 		case Upgrade.NIGHTVISION:
 			hex = Instantiate (nightHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Night Vision Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "I can see for miles and miles!\n(Bees collect more pollen.)";
 			break;
 		case Upgrade.REDHAT:
 			hex = Instantiate (redHatHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Red Hat Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "It may be boring, but it's very consistent.\n(Bees always come back with two pollen each.)";
 			break;
 		case Upgrade.ROBOT:
 			hex = Instantiate (roboHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Robobee";
+			hex.GetComponent<Hex> ().upgradeDescription = "BEEp\n(Improves turn worth, but diminishes pollen worth.)";
 			break;
 		case Upgrade.SCHOOLBUZZ:
 			hex = Instantiate (schoolBuzzHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "School Buzz";
+			hex.GetComponent<Hex> ().upgradeDescription = "There are just so many of them!\n(Bee count is increased.)";
 			break;
 		case Upgrade.UNICORN:
 			hex = Instantiate (rainbowHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Unicorn";
+			hex.GetComponent<Hex> ().upgradeDescription = "It is said that unicorns bring good luck.";
 			break;
 		case Upgrade.VISOR:
 			hex = Instantiate (visorHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Visor Bee";
+			hex.GetComponent<Hex> ().upgradeDescription = "Up for some beer pong, brah?\n(Bees come back with more pollen.)";
 			break;
 		case Upgrade.ZOMBIE:
 			hex = Instantiate (zombeeHex);
+			hex.GetComponent<Hex> ().upgradeTitle = "Zombee";
+			hex.GetComponent<Hex> ().upgradeDescription = "Beerraaaaiiinnnssss...\n(Bee count is decreased, but pollen is increased.)";
 			break;
 		default:
 			hex = Instantiate (basicHex);

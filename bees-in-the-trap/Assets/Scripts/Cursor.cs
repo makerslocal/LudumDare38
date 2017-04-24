@@ -79,6 +79,9 @@ public class Cursor : MonoBehaviour {
 		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", true);
 
 		camera.scootTo (this.transform.position);
+
+		itemTitleText.text = selectedHex.upgradeTitle;
+		itemDescriptionText.text = selectedHex.upgradeDescription;
 	}
 
 	public void FixCamera() {
