@@ -45,12 +45,12 @@ public class GameController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyUp ("b")) {
+	public void Update () {
+		if (bPressTimeStamp > 0f) {
 			if (Time.time - bPressTimeStamp > 0.5f) {
 				EndTurn ();
 				bPressTimeStamp = 0f;
-			} else {
+			} else if ( Input.GetKeyUp("b") ) {
 				Buy ();
 				bPressTimeStamp = 0f;
 			}
