@@ -95,6 +95,8 @@ public class BoardGeneration : MonoBehaviour {
 
 		AddPurchasableHexesAdjacentTo (startingHexIndex);
 
+		cursor.GetComponent<Cursor> ().FixCamera (); //forces the camera to snap to the cursor immediately
+
 	}
 
 	public void TakeOff() {

@@ -74,7 +74,13 @@ public class Cursor : MonoBehaviour {
 		
 		selectedHex = b.GetHexAtCursorPosition (moves);
 		selectedHex.transform.GetChild (0).gameObject.GetComponent<Animator> ().SetBool ("IsFocused", true);
+
 		camera.scootTo (this.transform.position);
+	}
+
+	public void FixCamera() {
+		//this is stupid
+		camera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10);
 	}
 
 	char ConvertDirectionToChar (Direction d) {
