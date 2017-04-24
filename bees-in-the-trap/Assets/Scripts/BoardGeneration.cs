@@ -10,7 +10,13 @@ public class BoardGeneration : MonoBehaviour {
 	public GameObject rainbowHex;
 	public GameObject zombeeHex;
 	public GameObject beeardHex;
+	public GameObject beachHex;
+	public GameObject gumHex;
 	public GameObject redHatHex;
+	public GameObject visorHex;
+	public GameObject beeBallHex;
+	public GameObject buzzFeedHex;
+	public GameObject schoolBuzzHex;
 	public GameObject cursor;
 	public GameObject rocketPrefab;
 
@@ -24,7 +30,9 @@ public class BoardGeneration : MonoBehaviour {
 	public GameObject rocketHex;
 
 	private int[] upgradeSpawnPoints;
-	private static int UPGRADE_COUNT = 6;
+	private static int UPGRADE_COUNT = 9;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -57,21 +65,8 @@ public class BoardGeneration : MonoBehaviour {
 				bee.GetComponent<SpriteRenderer> ().color = hex.GetComponent<SpriteRenderer> ().color;
 				bee.GetComponent<Animator> ().SetBool ("IsFocused", true);
 				bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
-			} else if (i == upgradeSpawnPoints [(int)Upgrade.ROBOT]) {
-				hex = Instantiate (roboHex);
-				hex.GetComponent<Hex> ().upgrade = Upgrade.ROBOT;
-			} else if (i == upgradeSpawnPoints [(int)Upgrade.NIGHTVISION]) {
-				hex = Instantiate (nightHex);
-				hex.GetComponent<Hex> ().upgrade = Upgrade.NIGHTVISION;
-			} else if (i == upgradeSpawnPoints [(int)Upgrade.UNICORN]) {
-				hex = Instantiate (rainbowHex);
-				hex.GetComponent<Hex> ().upgrade = Upgrade.UNICORN;
-			} else if (i == upgradeSpawnPoints [(int)Upgrade.ZOMBIE]) {
-				hex = Instantiate (zombeeHex);
-				hex.GetComponent<Hex> ().upgrade = Upgrade.ZOMBIE;
-			} else if (i == upgradeSpawnPoints [(int)Upgrade.REDHAT]) {
-				hex = Instantiate (redHatHex);
-				hex.GetComponent<Hex> ().upgrade = Upgrade.REDHAT;
+			} else if (IsAnUpgradeSpawnPoint (i)) {
+				hex = SpawnUpgrade (i);
 			} else {
 				hex = Instantiate (basicHex);
 			}
@@ -116,6 +111,64 @@ public class BoardGeneration : MonoBehaviour {
 		Debug.Log ("Done GTFOing");
 	}
 
+	bool IsAnUpgradeSpawnPoint(int i) {
+		foreach (int p in upgradeSpawnPoints)
+			if (i == p)
+				return true;
+		return false;
+	}
+	GameObject SpawnUpgrade(int i) {
+		Upgrade u = (Upgrade)0;
+		GameObject hex;
+
+		for (int upgradeIndex = 0; upgradeIndex < upgradeSpawnPoints.Length; upgradeIndex++) {
+			if(i == upgradeSpawnPoints[upgradeIndex])
+				u = (Upgrade)upgradeIndex;
+		}
+		switch (u) {
+		case Upgrade.BEACH:
+			hex = Instantiate (beachHex);
+			break;
+		case Upgrade.BEEARD:
+			hex = Instantiate (beeardHex);
+			break;
+		case Upgrade.BEEBALL:
+			hex = Instantiate (beeBallHex);
+			break;
+		case Upgrade.BUZZFEED:
+			hex = Instantiate (buzzFeedHex);
+			break;
+		case Upgrade.GUM:
+			hex = Instantiate (gumHex);
+			break;
+		case Upgrade.NIGHTVISION:
+			hex = Instantiate (nightHex);
+			break;
+		case Upgrade.REDHAT:
+			hex = Instantiate (redHatHex);
+			break;
+		case Upgrade.ROBOT:
+			hex = Instantiate (roboHex);
+			break;
+		case Upgrade.SCHOOLBUZZ:
+			hex = Instantiate (schoolBuzzHex);
+			break;
+		case Upgrade.UNICORN:
+			hex = Instantiate (rainbowHex);
+			break;
+		case Upgrade.VISOR:
+			hex = Instantiate (visorHex);
+			break;
+		case Upgrade.ZOMBIE:
+			hex = Instantiate (zombeeHex);
+			break;
+		default:
+			hex = Instantiate (basicHex);
+			break;
+		}
+		hex.GetComponent<Hex> ().upgrade = u;
+		return hex;
+	}
 
 	private Vector3 CalculateHexPosition(int i) {
 		int row = 0;

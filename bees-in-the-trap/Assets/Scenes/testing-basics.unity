@@ -2097,8 +2097,13 @@ MonoBehaviour:
   nightHex: {fileID: 1527883739879714, guid: 30a0dc45bd4834a639132bc8b559ac0b, type: 2}
   rainbowHex: {fileID: 1091459144510324, guid: 89dc5ad5a9c08443d956840ec1048f7f, type: 2}
   zombeeHex: {fileID: 1036649297814822, guid: cfa34e290d06a4643a3a424ff6c0257e, type: 2}
-  beeardHex: {fileID: 0}
+  beeardHex: {fileID: 1595315643117400, guid: e8ba7a8728483464c835feec67ebe309, type: 2}
+  beachHex: {fileID: 1924684907593696, guid: 8bf2fb7fbc9ec4c2fa900adb9f49c620, type: 2}
+  gumHex: {fileID: 1424935282192474, guid: e2547a47e59ce444d967cd9a81da4e03, type: 2}
   redHatHex: {fileID: 1954025694301698, guid: 1cb56759f415b4a38a47bc2a6b82013b, type: 2}
+  beeBallHex: {fileID: 1251837430508736, guid: ee3d674ed7b1345e5bbde486a923373a, type: 2}
+  buzzFeedHex: {fileID: 1045874325470600, guid: 092e10d21d4b4449fa7ca5cd5eb6e4ef,
+    type: 2}
   cursor: {fileID: 217595990}
   rocketPrefab: {fileID: 1967321498978304, guid: 3bb10c682b012734aa88d278c9c2d22b,
     type: 2}
