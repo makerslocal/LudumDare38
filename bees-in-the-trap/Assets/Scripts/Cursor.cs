@@ -25,6 +25,10 @@ public class Cursor : MonoBehaviour {
 		moves = "";
 		backPressTimestamp = 0f;
 		selectedHex = null;
+
+		//im' sorry these are here, they're just to work around me not wanting to edit the scene while jake edits it
+		itemTitleText.text = "Throne Room"; 
+		itemDescriptionText.text = "God save the queen.";
 	}
 
 	void Update () {
