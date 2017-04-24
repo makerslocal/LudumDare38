@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
 	private Cursor cursor;
 	private BoardGeneration b;
 	public BuilderLevel level;
+	public Image fadeOverlay;
 
 	private List<Upgrade> upgrades;
 
@@ -114,12 +115,31 @@ public class GameController : MonoBehaviour {
 			pollen += p;
 		}
 		usableBees = bees;
-		beeText.text = usableBees + " / " + bees;
-		pollenText.text = "" + pollen;
+		StartCoroutine(FadeInAndOut(0.1f));
 		if (++turn > TURN_COUNT) {
 			Application.LoadLevel (0); // end the game
 		}
-		turnText.text = "Turn " + turn + " / " + TURN_COUNT;
+	}
+
+	IEnumerator FadeInAndOut (float duration) {
+		int fadeFrames = 20;
+		float stepAmount = duration / (fadeFrames);
+		int step = 0;
+		Color c = fadeOverlay.color;
+		bool hasTextBeenSet = false;
+
+		while ( step <= fadeFrames ) {
+			c.a = Mathf.Sin ((float)step++ * stepAmount * (Mathf.PI / duration));
+			Debug.Log (c.a);
+			if (!hasTextBeenSet && c.a > 0.9f) {
+				beeText.text = usableBees + " / " + bees;
+				pollenText.text = "" + pollen;
+				turnText.text = "Turn " + turn + " / " + TURN_COUNT;
+				hasTextBeenSet = true;
+			}
+			fadeOverlay.color = c;
+			yield return null;
+		}
 	}
 
 	public string GetScoreDescription() {
