@@ -2100,6 +2100,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 1967321498978304, guid: 3bb10c682b012734aa88d278c9c2d22b,
     type: 2}
   boardContainer: {fileID: 1312778782}
+  rocketHex: {fileID: 0}
 --- !u!114 &1085354352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,6 +2113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorObject: {fileID: 217595990}
+  level: {fileID: 1745773613}
   turnText: {fileID: 363664361}
   beeText: {fileID: 106378767}
   pollenText: {fileID: 1985579144}

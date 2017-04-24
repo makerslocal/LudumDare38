@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
 	public GameObject cursorObject;
 	private Cursor cursor;
 	private BoardGeneration b;
+	public BuilderLevel level;
 
 	public Text turnText;
 	public Text beeText;
@@ -73,6 +74,11 @@ public class GameController : MonoBehaviour {
 			pollen -= h.pollenCost;
 			beeText.text = usableBees + " / " + bees;
 			pollenText.text = "" + pollen;
+
+			if (h.transform == b.rocketHex.transform) { //HACK HACK HACK
+				//The user bought the endgame tile.
+				level.startTakeoffCutscene ();
+			}
 		}
 	}
 

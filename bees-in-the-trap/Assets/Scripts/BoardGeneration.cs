@@ -18,6 +18,7 @@ public class BoardGeneration : MonoBehaviour {
 
 	private GameObject[] hexes;
 	private List<Hex> purchasableHexes;
+	public GameObject rocketHex;
 
 	private int[] upgradeSpawnPoints;
 	private static int UPGRADE_COUNT = 4;
@@ -75,6 +76,7 @@ public class BoardGeneration : MonoBehaviour {
 		int rocketHexIndex = Mathf.FloorToInt( hexes.Length - Mathf.FloorToInt(ROW_LENGTH/2) - 1 );
 		Debug.Log ("rocket edition: " + rocketHexIndex);
 		GameObject rocket = Instantiate (rocketPrefab);
+		rocketHex = hexes [rocketHexIndex];
 		Vector3 rocketHexPosition = hexes [rocketHexIndex].transform.GetChild (0).gameObject.transform.position;
 		rocket.transform.position = new Vector3 (rocketHexPosition.x, rocketHexPosition.y + 1.5f, rocketHexPosition.z);
 		rocket.transform.eulerAngles = new Vector3 (0, 0, 180);

@@ -8,7 +8,7 @@ public class BuilderLevel : MonoBehaviour {
 	public GameObject boardContainer;
 	public GameObject cutsceneUi;
 
-	void startTakeoffCutscene() {
+	public void startTakeoffCutscene() {
 		Debug.Log ("doing it");
 		StartCoroutine (doTakeoffCutscene ());
 	}
