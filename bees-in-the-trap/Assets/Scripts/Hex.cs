@@ -26,4 +26,13 @@ public class Hex : MonoBehaviour {
 			isActive = true;
 		}
 	}
+	public void IndicatePurchasableHex() {
+		GameObject i = Instantiate (purchasableIndicator);
+		i.transform.SetParent (transform);
+		i.transform.position = i.transform.parent.transform.position;
+	}
+	public void PurchaseHex () {
+		GameObject button = transform.FindChild ("Purchase Button(Clone)").gameObject;
+		Destroy (transform.FindChild("Purchase Button(Clone)").gameObject);
+	}
 }

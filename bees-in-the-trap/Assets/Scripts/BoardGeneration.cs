@@ -211,36 +211,42 @@ public class BoardGeneration : MonoBehaviour {
 		if (GetRowForIndex (i) == GetRowForIndex (i - 1) && i > 0) {
 			if (isPurchasableHex(i - 1)) {
 				purchasableHexes.Add (hexes [i - 1].GetComponent<Hex>());
+				hexes [i - 1].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}	
 		}
 		// upleft
 		if (i + ROW_LENGTH < hexes.Length) {
 			if (isPurchasableHex(i + ROW_LENGTH)) {
 				purchasableHexes.Add (hexes [i + ROW_LENGTH].GetComponent<Hex>());
+				hexes [i + ROW_LENGTH].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 		// upright
 		if (i + ROW_LENGTH + 1 < hexes.Length) {
 			if (isPurchasableHex(i + ROW_LENGTH + 1)) {
 				purchasableHexes.Add (hexes [i + ROW_LENGTH + 1].GetComponent<Hex>());
+				hexes [i + ROW_LENGTH + 1].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 		// right
 		if (GetRowForIndex (i) == GetRowForIndex (i + 1) && i + 1 < hexes.Length) {
 			if (isPurchasableHex(i + 1)) {
 				purchasableHexes.Add (hexes [i + 1].GetComponent<Hex>());
+				hexes [i + 1].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 		// downright
 		if (GetRowForIndex (i) > 0 && i - ROW_LENGTH >= 0) {
 			if(isPurchasableHex(i - ROW_LENGTH)) {
 				purchasableHexes.Add (hexes[i - ROW_LENGTH].GetComponent<Hex>());
+				hexes [i - ROW_LENGTH].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 		// downleft
 		if (GetRowForIndex (i) > 0 && i - (ROW_LENGTH + 1) >= 0) {
 			if(isPurchasableHex(i - (ROW_LENGTH + 1))) {
 				purchasableHexes.Add (hexes[i - (ROW_LENGTH + 1)].GetComponent<Hex>());
+				hexes [i - (ROW_LENGTH + 1)].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 

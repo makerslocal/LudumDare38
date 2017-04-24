@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour {
 
 		if (usableBees >= h.beeCost && pollen >= h.pollenCost && !h.isActive && b.isHexPurchasable(h)) {
 			h.ActivateHex ();
+			h.PurchaseHex ();
 			b.AddPurchasableHexesAdjacentTo (b.GetIndexOfHex(h));
 
 			GameObject bee = h.transform.GetChild (0).gameObject;
