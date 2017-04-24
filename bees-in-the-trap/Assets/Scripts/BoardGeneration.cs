@@ -139,7 +139,7 @@ public class BoardGeneration : MonoBehaviour {
 		case Upgrade.BEEBALL:
 			hex = Instantiate (beeBallHex);
 			hex.GetComponent<Hex> ().upgradeTitle = "Bee Ball";
-			hex.GetComponent<Hex> ().upgradeDescription = "More money, more money. Ballin'!\n(Improves pollen and bee worth.)";
+			hex.GetComponent<Hex> ().upgradeDescription = "More money, more honey. Ballin'!\n(Improves pollen and bee worth.)";
 			break;
 		case Upgrade.BUZZFEED:
 			hex = Instantiate (buzzFeedHex);
