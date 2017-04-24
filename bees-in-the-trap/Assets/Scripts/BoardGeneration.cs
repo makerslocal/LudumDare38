@@ -264,7 +264,7 @@ public class BoardGeneration : MonoBehaviour {
 
 	public int GetRowForIndex (int i) {
 		int r = 0;
-		while(i > ROW_LENGTH + ((r % 2 == 0)? 0 : 1)) {
+		while(i >= ROW_LENGTH + ((r % 2 == 0)? 0 : 1)) {
 			i -= ROW_LENGTH + ((r % 2 == 0)? 0 : 1);
 			r++;
 		}
