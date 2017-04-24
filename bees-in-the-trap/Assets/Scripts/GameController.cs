@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour {
 	private BoardGeneration b;
 	public BuilderLevel level;
 
+	private List<Upgrade> upgrades;
+
 	public Text turnText;
 	public Text beeText;
 	public Text pollenText;
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration> ();
 		cursor = cursorObject.GetComponent<Cursor> ();
+		upgrades = new List<Upgrade> ();
 
 		bees = usableBees = STARTING_BEES;
 		pollen = STARTING_POLLEN;
@@ -63,6 +66,8 @@ public class GameController : MonoBehaviour {
 		if (usableBees >= h.beeCost && pollen >= h.pollenCost && !h.isActive && b.isHexPurchasable(h)) {
 			h.ActivateHex ();
 			h.PurchaseHex ();
+			if (h.upgrade != default(Upgrade))
+				upgrades.Add (h.upgrade);
 			b.AddPurchasableHexesAdjacentTo (b.GetIndexOfHex(h));
 
 			GameObject bee = h.transform.GetChild (0).gameObject;

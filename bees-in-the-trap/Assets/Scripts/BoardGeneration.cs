@@ -8,6 +8,9 @@ public class BoardGeneration : MonoBehaviour {
 	public GameObject roboHex;
 	public GameObject nightHex;
 	public GameObject rainbowHex;
+	public GameObject zombeeHex;
+	public GameObject beeardHex;
+	public GameObject redHatHex;
 	public GameObject cursor;
 	public GameObject rocketPrefab;
 
@@ -21,7 +24,7 @@ public class BoardGeneration : MonoBehaviour {
 	public GameObject rocketHex;
 
 	private int[] upgradeSpawnPoints;
-	private static int UPGRADE_COUNT = 4;
+	private static int UPGRADE_COUNT = 6;
 
 	// Use this for initialization
 	void Start () {
@@ -55,12 +58,21 @@ public class BoardGeneration : MonoBehaviour {
 				bee.GetComponent<SpriteRenderer> ().color = hex.GetComponent<SpriteRenderer> ().color;
 				bee.GetComponent<Animator> ().SetBool ("IsFocused", true);
 				bee.GetComponent<Animator> ().SetBool ("IsPurchased", true);
-			} else if (i == upgradeSpawnPoints [0]) {
+			} else if (i == upgradeSpawnPoints [(int)Upgrade.ROBOT]) {
 				hex = Instantiate (roboHex);
-			} else if (i == upgradeSpawnPoints [1]) {
+				hex.GetComponent<Hex> ().upgrade = Upgrade.ROBOT;
+			} else if (i == upgradeSpawnPoints [(int)Upgrade.NIGHTVISION]) {
 				hex = Instantiate (nightHex);
-			} else if (i == upgradeSpawnPoints [2]) {
+				hex.GetComponent<Hex> ().upgrade = Upgrade.NIGHTVISION;
+			} else if (i == upgradeSpawnPoints [(int)Upgrade.UNICORN]) {
 				hex = Instantiate (rainbowHex);
+				hex.GetComponent<Hex> ().upgrade = Upgrade.UNICORN;
+			} else if (i == upgradeSpawnPoints [(int)Upgrade.ZOMBIE]) {
+				hex = Instantiate (zombeeHex);
+				hex.GetComponent<Hex> ().upgrade = Upgrade.ZOMBIE;
+			} else if (i == upgradeSpawnPoints [(int)Upgrade.REDHAT]) {
+				hex = Instantiate (redHatHex);
+				hex.GetComponent<Hex> ().upgrade = Upgrade.REDHAT;
 			} else {
 				hex = Instantiate (basicHex);
 			}

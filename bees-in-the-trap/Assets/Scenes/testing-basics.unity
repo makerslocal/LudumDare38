@@ -1953,7 +1953,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2096,6 +2096,9 @@ MonoBehaviour:
   roboHex: {fileID: 1238591757953694, guid: 6fbd817c99477484c81541cbd641bcdc, type: 2}
   nightHex: {fileID: 1527883739879714, guid: 30a0dc45bd4834a639132bc8b559ac0b, type: 2}
   rainbowHex: {fileID: 1091459144510324, guid: 89dc5ad5a9c08443d956840ec1048f7f, type: 2}
+  zombeeHex: {fileID: 1036649297814822, guid: cfa34e290d06a4643a3a424ff6c0257e, type: 2}
+  beeardHex: {fileID: 0}
+  redHatHex: {fileID: 1954025694301698, guid: 1cb56759f415b4a38a47bc2a6b82013b, type: 2}
   cursor: {fileID: 217595990}
   rocketPrefab: {fileID: 1967321498978304, guid: 3bb10c682b012734aa88d278c9c2d22b,
     type: 2}

@@ -20,6 +20,8 @@ public class Hex : MonoBehaviour {
 
 	public bool isActive;
 
+	public Upgrade upgrade;
+
 	public void ActivateHex () {
 		if (!isActive) {
 			GetComponent<SpriteRenderer> ().color = active;
