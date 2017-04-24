@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 	private BoardGeneration b;
 	public BuilderLevel level;
 	public Image fadeOverlay;
+	public GameObject background;
 
 	private List<Upgrade> upgrades;
 
@@ -138,6 +139,9 @@ public class GameController : MonoBehaviour {
 				beeText.text = usableBees + " / " + bees;
 				pollenText.text = "" + pollen;
 				turnText.text = "Turn " + turn + " / " + TURN_COUNT;
+				background.transform.position = new Vector3 ((((float) turn / TURN_COUNT) * 400) - 200, background.transform.position.y, background.transform.position.z); //HACK HACK HACK
+				Debug.Log("Set position!");
+				Debug.Log (background.transform.position);
 				hasTextBeenSet = true;
 			}
 			fadeOverlay.color = c;
