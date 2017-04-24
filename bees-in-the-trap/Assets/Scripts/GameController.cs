@@ -71,8 +71,9 @@ public class GameController : MonoBehaviour {
 		if (usableBees >= h.beeCost && pollen >= h.pollenCost && !h.isActive && b.isHexPurchasable(h)) {
 			h.ActivateHex ();
 			h.PurchaseHex ();
-			if (h.upgrade != default(Upgrade))
-				upgrades.Add (h.upgrade);
+			if (h.upgrade != default(Upgrade)) {
+				PerformUpgrade (h.upgrade);
+			}
 			b.AddPurchasableHexesAdjacentTo (b.GetIndexOfHex(h));
 
 			GameObject bee = h.transform.GetChild (0).gameObject;
@@ -94,8 +95,23 @@ public class GameController : MonoBehaviour {
 
 	void EndTurn () {
 		while (usableBees-- > 0) {
-			int r = Random.Range (0, 4);
-			pollen += r;
+			int p;
+			if (upgrades.Contains (Upgrade.REDHAT)) {
+				if (upgrades.Contains (Upgrade.NIGHTVISION))
+					p = 3;
+				else
+					p = 2;
+			}
+			else if (upgrades.Contains (Upgrade.NIGHTVISION))
+				p = Random.Range (0, 6);
+			else
+				p = Random.Range (0, 4);
+
+			if (upgrades.Contains (Upgrade.VISOR)) {
+				p++;
+			}
+
+			pollen += p;
 		}
 		usableBees = bees;
 		beeText.text = usableBees + " / " + bees;
@@ -180,6 +196,26 @@ public class GameController : MonoBehaviour {
 		result += "Score: " + score;
 
 		return result;
+	}
+	void PerformUpgrade (Upgrade u) {
+		upgrades.Add (u);
 
+		switch (u) {
+		case Upgrade.ZOMBIE:
+			usableBees = Mathf.FloorToInt (usableBees / 2f);
+			bees = Mathf.FloorToInt (bees / 2f);
+
+			pollen = (pollen + 10) * 4; // redeem cost before applying multiplier
+
+			break;
+		case Upgrade.SCHOOLBUZZ:
+			bees += 8; // total of +10 including default +2;
+			break;
+		case Upgrade.BUZZFEED:
+			pollen *= 2;
+			break;
+		default:
+			break;
+		}
 	}
 }
