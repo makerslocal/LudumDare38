@@ -2101,8 +2101,11 @@ MonoBehaviour:
   beachHex: {fileID: 1924684907593696, guid: 8bf2fb7fbc9ec4c2fa900adb9f49c620, type: 2}
   gumHex: {fileID: 1424935282192474, guid: e2547a47e59ce444d967cd9a81da4e03, type: 2}
   redHatHex: {fileID: 1954025694301698, guid: 1cb56759f415b4a38a47bc2a6b82013b, type: 2}
+  visorHex: {fileID: 1713967591876330, guid: 2a03e0aec2f0f44119fc8804480dc9ba, type: 2}
   beeBallHex: {fileID: 1251837430508736, guid: ee3d674ed7b1345e5bbde486a923373a, type: 2}
   buzzFeedHex: {fileID: 1045874325470600, guid: 092e10d21d4b4449fa7ca5cd5eb6e4ef,
+    type: 2}
+  schoolBuzzHex: {fileID: 1156529372615820, guid: 9daa5d0e09c1b49e5a09cc7951286533,
     type: 2}
   cursor: {fileID: 217595990}
   rocketPrefab: {fileID: 1967321498978304, guid: 3bb10c682b012734aa88d278c9c2d22b,
