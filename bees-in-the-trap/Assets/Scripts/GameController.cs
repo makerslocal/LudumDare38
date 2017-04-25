@@ -232,7 +232,7 @@ public class GameController : MonoBehaviour {
 		}
 		result += "\n";
 
-		result += "Score: " + score;
+		result += "Score: " + Mathf.FloorToInt((float) score);
 		result += "\nPress B to be some other bees.";
 
 		return result;
