@@ -19,6 +19,8 @@ public class Cursor : MonoBehaviour {
 	private float backPressTimestamp;
 	private Hex selectedHex;
 
+	public bool inhibitKeys = false;
+
 	void Start () {
 		b = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BoardGeneration>();
 
@@ -32,7 +34,10 @@ public class Cursor : MonoBehaviour {
 	}
 
 	void Update () {
-		
+
+		if (inhibitKeys)
+			return;
+
 		// we usually would let people configure the keys,
 		// but not for this hex-oriented control scheme.
 

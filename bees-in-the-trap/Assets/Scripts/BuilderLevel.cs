@@ -20,6 +20,7 @@ public class BuilderLevel : MonoBehaviour {
 	}
 	IEnumerator doTakeoffCutscene() {
 		GameObject.FindGameObjectWithTag ("Cursor").GetComponent<SpriteRenderer> ().enabled = false;
+		GameObject.FindGameObjectWithTag ("Cursor").GetComponent<Cursor> ().inhibitKeys = true;
 		foreach (GameObject thing in GameObject.FindGameObjectsWithTag("LevelUI")) {
 			thing.SetActive (false);
 		}
