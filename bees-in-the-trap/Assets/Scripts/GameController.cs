@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -120,9 +121,8 @@ public class GameController : MonoBehaviour {
 		}
 		usableBees = bees;
 		StartCoroutine(FadeInAndOut(0.1f));
-		if (++turn > TURN_COUNT) {
-			Application.LoadLevel (0); // end the game
-		}
+		if (++turn > TURN_COUNT)
+			SceneManager.LoadScene (2); // end the game
 	}
 
 	IEnumerator FadeInAndOut (float duration) {

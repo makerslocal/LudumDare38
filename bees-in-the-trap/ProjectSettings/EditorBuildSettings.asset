@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/testing-basics.unity
     guid: 744fc1f6dc27d49c59931557fb59669f
+  - enabled: 1
+    path: Assets/Scenes/ending-scene.unity
+    guid: 65d580ce28378485ca4be55f8866d756
