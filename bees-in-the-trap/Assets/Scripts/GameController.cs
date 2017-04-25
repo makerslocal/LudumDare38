@@ -245,7 +245,7 @@ public class GameController : MonoBehaviour {
 			usableBees = Mathf.FloorToInt (usableBees / 2f);
 			bees = Mathf.FloorToInt (bees / 2f);
 
-			pollen = (pollen + 10) * 4; // redeem cost before applying multiplier
+			pollen = (pollen + 10) * 1.4; // redeem cost before applying multiplier
 
 			break;
 		case Upgrade.SCHOOLBUZZ:
