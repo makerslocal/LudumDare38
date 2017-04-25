@@ -221,6 +221,7 @@ public class GameController : MonoBehaviour {
 		result += "\n";
 
 		result += "Score: " + score;
+		result += "\nPress B to be some other bees.";
 
 		return result;
 	}

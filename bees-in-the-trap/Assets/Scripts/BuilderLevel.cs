@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BuilderLevel : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class BuilderLevel : MonoBehaviour {
 	public GameObject cutsceneUi;
 	public Text resultText;
 	public GameController gc;
+
+	private bool cutsceneDone = false;
 
 	public void startTakeoffCutscene() {
 		Debug.Log ("doing it");
@@ -47,6 +50,8 @@ public class BuilderLevel : MonoBehaviour {
 		resultText.text = gc.GetScoreDescription ();
 		cutsceneUi.SetActive (true);
 
+		cutsceneDone = true;
+
 	}
 
 	// Use this for initialization
@@ -62,5 +67,9 @@ public class BuilderLevel : MonoBehaviour {
 			startTakeoffCutscene ();
 		}
 		*/
+
+		if (cutsceneDone && Input.GetKeyUp ("b")) {
+			SceneManager.LoadScene (1);
+		}
 	}
 }
