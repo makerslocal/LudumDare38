@@ -167,6 +167,18 @@ public class GameController : MonoBehaviour {
 		if (upgrades.Contains (Upgrade.UNICORN)) {
 			adjLuck = adjLuck * 1.3;
 		}
+		if (upgrades.Contains (Upgrade.BEACH)) {
+			adjUnusedTurns = adjUnusedTurns * 0.7;
+			adjBees = adjBees * 1.25;
+		}
+		if (upgrades.Contains (Upgrade.GUM)) {
+			adjPollen = adjPollen * 1.1;
+			adjUnusedTurns = adjUnusedTurns * 1.15;
+		}
+		if (upgrades.Contains (Upgrade.BEEBALL)) {
+			adjPollen = adjPollen * 1.1;
+			adjBees = adjBees * 1.2;
+		}
 		Debug.Log ("adjBees: " + adjBees + ", adjPollen: " + adjPollen + ", adjUnusedTurns: " + adjUnusedTurns + ", adjLuck: " + adjLuck);
 
 		double score = 0;
