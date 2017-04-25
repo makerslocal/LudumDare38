@@ -56,11 +56,11 @@ public class GameController : MonoBehaviour {
 	public void Update () {
 		if (bPressTimeStamp > 0f) {
 			if (Time.time - bPressTimeStamp > 0.5f) {
+				bPressTimeStamp = 0f;
 				EndTurn ();
-				bPressTimeStamp = 0f;
 			} else if ( Input.GetKeyUp("b") ) {
-				Buy ();
 				bPressTimeStamp = 0f;
+				Buy ();
 			}
 		}
 		if (Input.GetKeyDown ("b")) {
