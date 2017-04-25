@@ -429,10 +429,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: ababb66ea30494e2f94ebad32191a057, type: 3}
-    m_FontSize: 34
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -442,6 +442,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Vague allusions to environmental concerns plague your final thoughts as
     your hive crumbles for unknown reasons.
+
+
+    If only you had a little bee rocketship...
 
 
     Press B to be some other bees.'
