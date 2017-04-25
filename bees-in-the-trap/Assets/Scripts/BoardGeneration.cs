@@ -307,14 +307,14 @@ public class BoardGeneration : MonoBehaviour {
 			}	
 		}
 		// upleft
-		if (i + ROW_LENGTH < hexes.Length) {
+		if (GetRowForIndex (i) == GetRowForIndex(i - 1) && i + ROW_LENGTH < hexes.Length) {
 			if (isPurchasableHex(i + ROW_LENGTH)) {
 				purchasableHexes.Add (hexes [i + ROW_LENGTH].GetComponent<Hex>());
 				hexes [i + ROW_LENGTH].GetComponent<Hex> ().IndicatePurchasableHex ();
 			}
 		}
 		// upright
-		if (i + ROW_LENGTH + 1 < hexes.Length) {
+		if (GetRowForIndex (i) == GetRowForIndex(i + 1) && i + ROW_LENGTH + 1 < hexes.Length) {
 			if (isPurchasableHex(i + ROW_LENGTH + 1)) {
 				purchasableHexes.Add (hexes [i + ROW_LENGTH + 1].GetComponent<Hex>());
 				hexes [i + ROW_LENGTH + 1].GetComponent<Hex> ().IndicatePurchasableHex ();
